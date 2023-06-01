@@ -10,7 +10,8 @@
     --lime: #bef264;
     --white-amber: #fffbeb;
     --black-amber: #451a03;
-    --dark-amber: #78350f;
+    --darker-amber: #78350f;
+    --dark-amber: #92400e;
 }
 
 body {
@@ -40,7 +41,7 @@ body {
 
 .cardContainer {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     grid-auto-rows: 1fr;
     padding: 32px;
     gap: 32px;
@@ -51,10 +52,18 @@ body {
     background-color: var(--dark-amber);
     min-height: 100px;
     min-width: 100px;
-    aspect-ratio: 2/3;
-    border-radius: 16px;
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
+    aspect-ratio: 1/1.5;
+    border-radius: 8%;
+    border-top-right-radius: 4%;
+    border-bottom-right-radius: 4%;
     padding: 16px;
-    border-left: 16px solid var(--black-amber);
+    border-left: 16px solid var(--darker-amber);
+    box-shadow: 0px 0px 6px -3px rgba(0, 0, 0, 0.5);
+    transition: 0.5s;
+}
+
+.card:hover {
+    box-shadow: -8px -4px 6px -3px rgba(0, 0, 0, 0.5);
+    transform: translate(4px, 8px);
+    transition: 0.5s;
 }
