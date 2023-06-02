@@ -80,6 +80,8 @@ body {
     color: var(--black-lime);
     transform: rotateY(-5deg);
     border: 4px solid var(--dark-lime);
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
 }
 
 .addBookForm > h1 {
