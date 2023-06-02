@@ -11,10 +11,46 @@
 </head>
 <body>
     <div class="sidebar">
-
+        <div class="bookSide">
+            <div class="addBook">A <br>D <br>D <br><br>B <br>O <br>O <br>K</div>
+        </div>
+        <form class="addBookForm" action="index.html" method="get">
+            <h1>Let's fill in some info...</h1>
+            <label for="title">
+                <div>Title</div>
+                <input type="text" id="title" name="title" required>
+                <div class="error" aria-live="polite"></div>
+            </label>
+            <label for="author">
+                <div>Author</div>
+                <input type="text" id="author" name="author" required>
+                <div class="error" aria-live="polite"></div>
+            </label>
+            <label for="totalPages">
+                <div>Total Pages</div>
+                <input type="tel" id="totalPages" name="totalPages" required>
+                <div class="error" aria-live="polite"></div>
+            </label>
+            <fieldset class="readingStatus">
+                <legend>Reading Status</legend>
+                <label for="toBeRead">
+                    <input type="radio" name="readingStatus" id="toBeRead" value="toBeRead">
+                    <div>To Be Read</div>
+                </label>
+                <label for="inProgress">
+                    <input type="radio" name="readingStatus" id="inProgress" value="inProgress">
+                    <div>In Progress</div>
+                </label>
+                <label for="completed">
+                    <input type="radio" name="readingStatus" id="completed" value="completed">
+                    <div>Completed</div>
+                </label>
+            </fieldset>
+            <button type="button">Add Book</button>
+        </form>
     </div>
     <div class="header">
-
+        <div class="title">Book Tracker</div>
     </div>
     <div class="content">
         <div class="cardContainer">
