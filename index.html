@@ -14,7 +14,7 @@
         <div class="bookSide">
             <div class="addBook">A <br>D <br>D <br><br>B <br>O <br>O <br>K</div>
         </div>
-        <form class="addBookForm" action="index.html" method="get">
+        <form id="addBookForm" action="index.html" method="get">
             <h1>Let's fill in some info...</h1>
             <label for="title">
                 <div>Title</div>
@@ -34,7 +34,7 @@
             <fieldset class="readingStatus">
                 <legend>Reading Status</legend>
                 <label for="toBeRead">
-                    <input type="radio" name="readingStatus" id="toBeRead" value="toBeRead">
+                    <input type="radio" name="readingStatus" id="toBeRead" value="To Be Read">
                     <svg class="c-form__radio-icon" viewbox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
                         <circle class="c-form__radio-circle" cx="10.809" cy="10.809" r="9.461"/>
                         <polyline class="c-form__radio-tick" points="5 8 10 15 25 0"/>
@@ -42,7 +42,7 @@
                     <div>To Be Read</div>
                 </label>
                 <label for="inProgress">
-                    <input type="radio" name="readingStatus" id="inProgress" value="inProgress">
+                    <input type="radio" name="readingStatus" id="inProgress" value="In Progress">
                     <svg class="c-form__radio-icon" viewbox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
                         <circle class="c-form__radio-circle" cx="10.809" cy="10.809" r="9.461"/>
                         <polyline class="c-form__radio-tick" points="5 8 10 15 25 0"/>
@@ -50,7 +50,7 @@
                     <div>In Progress</div>
                 </label>
                 <label for="completed">
-                    <input type="radio" name="readingStatus" id="completed" value="completed">
+                    <input type="radio" name="readingStatus" id="completed" value="Completed">
                     <svg class="c-form__radio-icon" viewbox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
                         <circle class="c-form__radio-circle" cx="10.809" cy="10.809" r="9.461"/>
                         <polyline class="c-form__radio-tick" points="5 8 10 15 25 0"/>
@@ -58,21 +58,15 @@
                     <div>Completed</div>
                 </label>
             </fieldset>
-            <button type="button">Add Book</button>
+            <button id="addBookButton" type="button">Add Book</button>
         </form>
     </div>
     <div class="header">
-        <div class="title">Book Tracker</div>
+        <div class="siteTitle">Book Tracker</div>
     </div>
     <div class="content">
-        <div class="cardContainer">
-            <div class="card">I'm a card.</div>
-            <div class="card">I'm also a card.</div>
-            <div class="card">I'm another card.</div>
-            <div class="card">Look at me! Yet another card!</div>
-            <div class="card">I have so many siblings!</div>
-            <div class="card">Too many siblings.</div>
-            <div class="card">Please, no more siblings.</div>
+        <div id="bookContainer">
+            
         </div>
     </div>
 </body>
