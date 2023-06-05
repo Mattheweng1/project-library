@@ -105,6 +105,47 @@ fieldset > label {
     gap: 16px;
 }
 
+fieldset > label > input {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+fieldset > label > input:checked + svg > .c-form__radio-tick {
+    stroke-dashoffset: 0;
+}
+
+fieldset > label > input:focus + svg > .c-form__radio-circle {
+    stroke: var(--dark-lime);
+}
+
+.c-form__radio-icon {
+    height: 2.5rem;
+    width: 2.5rem;
+    vertical-align: middle;
+}
+
+.c-form__radio-circle {
+    fill: none;
+    stroke: var(--lime);
+    stroke-width: 1.5;
+    transition: stroke 0.3s ease-in;
+}
+
+.c-form__radio-tick {
+    fill: none;
+    stroke: var(--black-lime);
+    stroke-dasharray: 33; /* this is the length of the line */
+    stroke-dashoffset: 33; /* this is the length of the line */
+    stroke-width: 2;
+    transition: stroke-dashoffset 0.3s ease-in;
+}
+
 input {
     height: 2.5rem;
     border: none;
