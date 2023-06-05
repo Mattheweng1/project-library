@@ -211,6 +211,8 @@ form > button {
 }
 
 .book {
+    display: grid;
+    grid-template-rows: auto 1fr auto auto;
     background-color: var(--dark-amber);
     max-height: 50vh;
     min-width: 100px;
@@ -220,12 +222,49 @@ form > button {
     border-bottom-right-radius: 4%;
     padding: 16px;
     border-left: 16px solid var(--darker-amber);
-    box-shadow: 0px 0px 6px -3px rgba(0, 0, 0, 0.5);
+    box-shadow: -8px -4px 6px -3px rgba(0, 0, 0, 0.5);
     transition: 0.5s;
+    color: var(--black-amber);
 }
 
 .book:hover {
-    box-shadow: -8px -4px 6px -3px rgba(0, 0, 0, 0.5);
+    box-shadow: -16px -14px 12px -6px rgba(0, 0, 0, 0.5);
     transform: translate(4px, 8px);
     transition: 0.5s;
+}
+
+.book .title {
+    border: 4px solid var(--darker-amber);
+    padding: 1rem;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.book .author {
+    text-align: center;
+    padding: 1rem;
+    font-weight: bold;
+}
+
+.book .totalPages {
+    padding: 0.5rem;
+    font-weight: bold;
+    display: grid;
+    justify-self: right;
+}
+
+.book .readingStatus {
+    padding: 0.5rem 1rem;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    align-self: center;
+    justify-self: right;
+    height: 2rem;
+    background-color: green;
+    border: 2px solid lightgreen;
+    border-radius: 1rem;
+    color: white;
+    font-weight: bold;
 }
