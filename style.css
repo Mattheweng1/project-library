@@ -16,8 +16,9 @@
     --black-lime: #1a2e05;
     --white-amber: #fffbeb;
     --black-amber: #451a03;
-    --darker-amber: #78350f;
-    --dark-amber: #92400e;
+    --darkest-amber: #78350f;
+    --darker-amber: #92400e;
+    --dark-amber: #b45309;
 }
 
 body {
@@ -225,6 +226,7 @@ form > button {
     box-shadow: -8px -4px 6px -3px rgba(0, 0, 0, 0.5);
     transition: 0.5s;
     color: var(--black-amber);
+    font-weight: bold;
 }
 
 .book:hover {
@@ -237,19 +239,16 @@ form > button {
     border: 4px solid var(--darker-amber);
     padding: 1rem;
     font-size: 2rem;
-    font-weight: bold;
     text-align: center;
 }
 
 .book .author {
     text-align: center;
     padding: 1rem;
-    font-weight: bold;
 }
 
 .book .totalPages {
-    padding: 0.5rem;
-    font-weight: bold;
+    padding: 1rem;
     display: grid;
     justify-self: right;
 }
@@ -266,5 +265,4 @@ form > button {
     border: 2px solid lightgreen;
     border-radius: 1rem;
     color: white;
-    font-weight: bold;
 }

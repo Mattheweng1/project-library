@@ -7,7 +7,11 @@ function Book(title, author, totalPages, readingStatus) {
     this.readingStatus = readingStatus;
 }
 
-myLibrary.push(new Book('The Telltale Heart', 'Edgar Allan Poe', '34', 'Completed'));
+myLibrary.push(new Book('The Tell-Tale Heart', 'Edgar Allan Poe', 4, 'Completed'));
+
+myLibrary.push(new Book('The Way Of Kings', 'Brandon Sanderson', 1258, 'In Progress'));
+
+myLibrary.push(new Book('The Name of the Wind', 'Patrick Rothfuss', 722, 'To Be Read'));
 
 function addBookToLibrary() {
     const title = document.getElementById("addBookForm").elements["title"].value;
