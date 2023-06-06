@@ -13,6 +13,12 @@ myLibrary.push(new Book('The Way Of Kings', 'Brandon Sanderson', 1258, 'In Progr
 
 myLibrary.push(new Book('The Name of the Wind', 'Patrick Rothfuss', 722, 'To Be Read'));
 
+myLibrary.push(new Book('Fahrenheit 451', 'Ray Bradbury', 249, 'Completed'));
+
+myLibrary.push(new Book('The Lies of Locke Lamora', 'Scott Lynch', 752, 'To Be Read'));
+
+myLibrary.push (new Book('The Blade Itself', 'Joe Abercrombie', 536, 'To Be Read'));
+
 function addBookToLibrary() {
     const title = document.getElementById("addBookForm").elements["title"].value;
     const author = document.getElementById("addBookForm").elements["author"].value;
@@ -52,7 +58,7 @@ function displayBooks() {
 
         const totalPagesDiv = document.createElement('div');
         totalPagesDiv.classList.add('totalPages');
-        totalPagesDiv.textContent = 'Total Pages: ' + book.totalPages;
+        totalPagesDiv.textContent = 'Pages: ' + book.totalPages;
         bookDiv.appendChild(totalPagesDiv);
 
         const readingStatusDiv = document.createElement('div');
