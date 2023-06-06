@@ -28,7 +28,8 @@ function addBookToLibrary() {
     myLibrary.push(new Book(title, author, totalPages, readingStatus));
     document.getElementById("addBookForm").reset();
 
-    displayBooks();
+    refreshLibrary();
+    updateReadingStatus();
 }
 
 document.getElementById("addBookButton").addEventListener('click', addBookToLibrary);
@@ -39,7 +40,7 @@ function removeAllChildNodes(parent) {
     }
 }
 
-function displayBooks() {
+function refreshLibrary() {
     removeAllChildNodes(document.getElementById('bookContainer'));
 
     myLibrary.forEach(book => {
@@ -70,4 +71,53 @@ function displayBooks() {
     })
 }
 
-displayBooks();
+refreshLibrary();
+
+function updateReadingStatusColor() {
+    Array.from(document.getElementsByClassName('readingStatus')).forEach((e) => {
+        switch (e.textContent) {
+            case 'To Be Read':
+                e.classList.remove('inProgress');
+                e.classList.remove('completed');
+                e.classList.add('toBeRead');
+                break;
+            case 'In Progress':
+                e.classList.remove('completed');
+                e.classList.remove('toBeRead');
+                e.classList.add('inProgress');
+                break;
+            case 'Completed':
+                e.classList.remove('toBeRead');
+                e.classList.remove('inProgress');
+                e.classList.add('completed');
+                break;
+        }
+    })
+}
+
+function changeReadingStatusEventListener() {
+    Array.from(document.getElementsByClassName('readingStatus')).forEach((e) => {
+        e.addEventListener('click', () => {
+            switch (e.textContent) {
+                case 'To Be Read':
+                    e.textContent = 'In Progress';
+                    break;
+                case 'In Progress':
+                    e.textContent = 'Completed';
+                    break;
+                case 'Completed':
+                    e.textContent = 'To Be Read';
+                    break;
+            }
+            updateReadingStatusColor();
+        })
+        
+    })
+}
+
+function updateReadingStatus() {
+    changeReadingStatusEventListener();
+    updateReadingStatusColor();
+}
+
+updateReadingStatus();
