@@ -121,3 +121,22 @@ function updateReadingStatus() {
 }
 
 updateReadingStatus();
+
+scalingFontSize = function (parent, child, boxWidthPercent) {
+    Array.from(document.querySelectorAll(parent)).forEach((e) => {
+        let fontSize = e.offsetWidth * (boxWidthPercent / 100);
+        e.querySelector(child).style.fontSize = fontSize + 'px';
+    })
+};
+
+scalingFontSize('.book', '.title', 10);
+window.addEventListener('resize', () => scalingFontSize('.book', '.title', 10));
+
+scalingFontSize('.book', '.author', 8);
+window.addEventListener('resize', () => scalingFontSize('.book', '.author', 8));
+
+scalingFontSize('.book', '.totalPages', 8);
+window.addEventListener('resize', () => scalingFontSize('.book', '.totalPages', 8));
+
+scalingFontSize('.book', '.readingStatus', 8);
+window.addEventListener('resize', () => scalingFontSize('.book', '.readingStatus', 8));
