@@ -225,9 +225,9 @@ form > button {
     border-left: 16px solid var(--darker-amber);
     box-shadow: -8px -4px 6px -3px rgba(0, 0, 0, 0.5);
     transition: 0.5s;
+    transition: font-size 0s;
     color: var(--black-amber);
     font-weight: bold;
-    font-size: clamp(0.75rem, 1.5vw, 1.5rem);
 }
 
 .book:hover {
@@ -239,7 +239,7 @@ form > button {
 .book .title {
     border: 4px solid var(--darker-amber);
     padding: 1rem;
-    font-size: clamp(1rem, 2vw, 2rem);
+    font-size: 150%;
     text-align: center;
 }
 

@@ -122,21 +122,15 @@ function updateReadingStatus() {
 
 updateReadingStatus();
 
-scalingFontSize = function (parent, child, boxWidthPercent) {
-    Array.from(document.querySelectorAll(parent)).forEach((e) => {
-        let fontSize = e.offsetWidth * (boxWidthPercent / 100);
-        e.querySelector(child).style.fontSize = fontSize + 'px';
+scaleFontSize = function (selectorStr, boxWidthPercent) {
+    Array.from(document.querySelectorAll(selectorStr)).forEach((e) => {
+        e.style.fontSize = (e.offsetWidth * (boxWidthPercent / 100)) + 'px';
     })
 };
 
-scalingFontSize('.book', '.title', 10);
-window.addEventListener('resize', () => scalingFontSize('.book', '.title', 10));
+scalingFontSize = function (selectorStr, boxWidthPercent) {
+    scaleFontSize(selectorStr, boxWidthPercent);
+    window.addEventListener('resize', () => scaleFontSize(selectorStr, boxWidthPercent));
+}
 
-scalingFontSize('.book', '.author', 8);
-window.addEventListener('resize', () => scalingFontSize('.book', '.author', 8));
-
-scalingFontSize('.book', '.totalPages', 8);
-window.addEventListener('resize', () => scalingFontSize('.book', '.totalPages', 8));
-
-scalingFontSize('.book', '.readingStatus', 8);
-window.addEventListener('resize', () => scalingFontSize('.book', '.readingStatus', 8));
+scalingFontSize('.book', 8);
