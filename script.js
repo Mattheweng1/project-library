@@ -68,6 +68,7 @@ function refreshLibrary() {
         bookDiv.appendChild(readingStatusDiv);
 
         document.getElementById('bookContainer').appendChild(bookDiv);
+        bookDiv.setAttribute('data-index', myLibrary.indexOf(book));
     })
 }
 
@@ -95,18 +96,21 @@ function updateReadingStatusColor() {
     })
 }
 
-function changeReadingStatusEventListener() {
-    Array.from(document.getElementsByClassName('readingStatus')).forEach((e) => {
-        e.addEventListener('click', () => {
-            switch (e.textContent) {
+function readingStatusEventListener() {
+    Array.from(document.querySelectorAll('.book')).forEach((e) => {
+        e.querySelector('.readingStatus').addEventListener('click', () => {
+            switch (myLibrary[e.getAttribute('data-index')].readingStatus) {
                 case 'To Be Read':
-                    e.textContent = 'In Progress';
+                    myLibrary[e.getAttribute('data-index')].readingStatus = 'In Progress';
+                    e.querySelector('.readingStatus').textContent = myLibrary[e.getAttribute('data-index')].readingStatus;
                     break;
                 case 'In Progress':
-                    e.textContent = 'Completed';
+                    myLibrary[e.getAttribute('data-index')].readingStatus = 'Completed';
+                    e.querySelector('.readingStatus').textContent = myLibrary[e.getAttribute('data-index')].readingStatus;
                     break;
                 case 'Completed':
-                    e.textContent = 'To Be Read';
+                    myLibrary[e.getAttribute('data-index')].readingStatus = 'To Be Read';
+                    e.querySelector('.readingStatus').textContent = myLibrary[e.getAttribute('data-index')].readingStatus;
                     break;
             }
             updateReadingStatusColor();
@@ -116,7 +120,7 @@ function changeReadingStatusEventListener() {
 }
 
 function updateReadingStatus() {
-    changeReadingStatusEventListener();
+    readingStatusEventListener();
     updateReadingStatusColor();
 }
 
