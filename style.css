@@ -173,6 +173,32 @@ form > label > input:focus {
     transition: 0.5s;
 }
 
+label > div,
+fieldset {
+    position: relative;
+}
+
+.error {
+    background-color: var(--black-lime);
+    outline: 2px solid var(--dark-lime);
+    color: var(--light-lime);
+    font-size: 0.5em;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 0.25em;
+    transition: background-color 1s ease-in;
+}
+
+.error:empty {
+    opacity: 0;
+}
+
+.flashError {
+    background-color: rgba(255, 0, 0, 0.75);
+    transition: 0.1s;
+}
+
 form > button {
     margin: 32px;
 }

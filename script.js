@@ -32,8 +32,6 @@ function addBookToLibrary() {
     updateReadingStatus();
 }
 
-document.getElementById("addBookButton").addEventListener('click', addBookToLibrary);
-
 function removeAllChildNodes(parent) {
     while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
@@ -126,6 +124,8 @@ function updateReadingStatus() {
 
 updateReadingStatus();
 
+// Scale font with element width.
+
 scaleFontSize = function (selectorStr, boxWidthPercent) {
     Array.from(document.querySelectorAll(selectorStr)).forEach((e) => {
         e.style.fontSize = (e.offsetWidth * (boxWidthPercent / 100)) + 'px';
@@ -138,3 +138,141 @@ scalingFontSize = function (selectorStr, boxWidthPercent) {
 }
 
 scalingFontSize('.book', 8);
+
+// Form Validation
+
+const form = document.querySelector('form');
+
+form.noValidate = true;
+
+const errors = form.querySelectorAll('.error');
+
+form.addEventListener('submit', function handleFormSubmit(event) {
+    const isValid = form.reportValidity();
+
+    if (!isValid) {
+        event.preventDefault();
+
+        for (const field of form.elements) {
+            if (field.validationMessage) {
+                if (field.getAttribute('type') === 'radio') {
+                    form.querySelector(`fieldset.${field.name} .error`).classList.add('flashError');
+                    setTimeout(() => {
+                        form.querySelector(`fieldset.${field.name} .error`).classList.remove('flashError');
+                    }, 100);
+                } else {
+                    form.querySelector(`label[for=${field.name}]>div>.error`).classList.add('flashError');
+                    setTimeout(() => {
+                        form.querySelector(`label[for=${field.name}]>div>.error`).classList.remove('flashError');
+                    }, 100);
+                }
+            }
+        }
+    } else {
+        addBookToLibrary();
+        event.preventDefault();
+    }
+})
+
+function showError(field) {
+    if (Array.isArray(field)) {
+        field[0].reportValidity();
+        form.querySelector(`fieldset.${field[0].name} .error`).textContent = field[0].validationMessage;
+    } else {
+        field.reportValidity();
+        form.querySelector(`label[for=${field.name}]>div>.error`).textContent = field.validationMessage;
+    }
+}
+
+// Radio fields have their own validation.
+
+const readingStatusRadioArr = Array.from(document.querySelectorAll(`[name='readingStatus']`));
+
+if (readingStatusRadioArr.every((e) => !e.checked)) {
+    readingStatusRadioArr[0].setCustomValidity("* Please fill out this field.");
+}
+
+readingStatusRadioArr[0].addEventListener('invalid', (event) => {
+    form.querySelector(`fieldset.${readingStatusRadioArr[0].name} .error`).textContent = readingStatusRadioArr[0].validationMessage;
+    event.preventDefault();
+})
+
+readingStatusRadioArr.forEach((radio) => {
+    radio.addEventListener('change', () => {
+        if (readingStatusRadioArr.every((e) => !e.checked)) {
+            readingStatusRadioArr[0].setCustomValidity("* Please fill out this field.");
+        } else {
+            readingStatusRadioArr[0].setCustomValidity('');
+        }
+        showError(readingStatusRadioArr);
+    });
+})
+
+// Text and tel field validation.
+
+for (const field of form.querySelectorAll('.field')) {
+    if (field.validity.valueMissing) {
+        field.setCustomValidity("* Please fill out this field.");
+    }
+
+    field.addEventListener('invalid', function handleInvalidField(event) {
+        form.querySelector(`label[for=${field.name}]>div>.error`).textContent = field.validationMessage;
+        event.preventDefault();
+    });
+
+    field.addEventListener('input', function handleFieldInput(event) {
+        validate(field.name);
+    });
+}
+
+function validate(fieldName) {
+    switch(fieldName) {
+        case 'title':
+            validateTitleField();
+            break;
+        case 'author':
+            validateAuthorField();
+            break;
+        case 'totalPages':
+            validateTotalPagesField();
+            break;
+    }
+}
+
+const titleField = document.querySelector(`[name='title']`);
+
+function validateTitleField() {
+    if (titleField.validity.valueMissing) {
+        titleField.setCustomValidity("* Please fill out this field.");
+    } else {
+        titleField.setCustomValidity("");
+    }
+
+    showError(titleField);
+}
+
+const authorField = document.querySelector(`[name='author']`);
+
+function validateAuthorField() {
+    if (authorField.validity.valueMissing) {
+        authorField.setCustomValidity("* Please fill out this field.");
+    } else {
+        authorField.setCustomValidity("");
+    }
+
+    showError(authorField);
+}
+
+const totalPagesField = document.querySelector(`[name='totalPages']`);
+
+function validateTotalPagesField() {
+    if (totalPagesField.validity.valueMissing) {
+        totalPagesField.setCustomValidity("* Please fill out this field.");
+    } else if (isNaN(totalPagesField.value)) {
+        totalPagesField.setCustomValidity("* Please enter a number.");
+    } else {
+        totalPagesField.setCustomValidity("");
+    }
+
+    showError(totalPagesField);
+}

@@ -17,24 +17,31 @@
         <form id="addBookForm" action="index.html" method="get">
             <h1>Let's fill in some info...</h1>
             <label for="title">
-                <div>Title</div>
-                <input type="text" id="title" name="title" required>
-                <div class="error" aria-live="polite"></div>
+                <div>
+                    Title
+                    <div class="error" aria-live="polite"></div>
+                </div>
+                <input class="field" type="text" id="title" name="title" required>
             </label>
             <label for="author">
-                <div>Author</div>
-                <input type="text" id="author" name="author" required>
-                <div class="error" aria-live="polite"></div>
+                <div>
+                    Author
+                    <div class="error" aria-live="polite"></div>
+                </div>
+                <input class="field" type="text" id="author" name="author" required>
             </label>
             <label for="totalPages">
-                <div>Total Pages</div>
-                <input type="tel" id="totalPages" name="totalPages" required>
-                <div class="error" aria-live="polite"></div>
+                <div>
+                    Total Pages
+                    <div class="error" aria-live="polite"></div>
+                </div>
+                <input class="field" type="tel" id="totalPages" name="totalPages" required>
             </label>
             <fieldset class="readingStatus">
                 <legend>Reading Status</legend>
+                <div class="error" aria-live="polite"></div>
                 <label for="toBeRead">
-                    <input type="radio" name="readingStatus" id="toBeRead" value="To Be Read">
+                    <input type="radio" name="readingStatus" id="toBeRead" value="To Be Read" required>
                     <svg class="c-form__radio-icon" viewbox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
                         <circle class="c-form__radio-circle" cx="10.809" cy="10.809" r="9.461"/>
                         <polyline class="c-form__radio-tick" points="5 8 10 15 25 0"/>
@@ -42,7 +49,7 @@
                     <div>To Be Read</div>
                 </label>
                 <label for="inProgress">
-                    <input type="radio" name="readingStatus" id="inProgress" value="In Progress">
+                    <input type="radio" name="readingStatus" id="inProgress" value="In Progress" required>
                     <svg class="c-form__radio-icon" viewbox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
                         <circle class="c-form__radio-circle" cx="10.809" cy="10.809" r="9.461"/>
                         <polyline class="c-form__radio-tick" points="5 8 10 15 25 0"/>
@@ -50,7 +57,7 @@
                     <div>In Progress</div>
                 </label>
                 <label for="completed">
-                    <input type="radio" name="readingStatus" id="completed" value="Completed">
+                    <input type="radio" name="readingStatus" id="completed" value="Completed" required>
                     <svg class="c-form__radio-icon" viewbox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
                         <circle class="c-form__radio-circle" cx="10.809" cy="10.809" r="9.461"/>
                         <polyline class="c-form__radio-tick" points="5 8 10 15 25 0"/>
@@ -58,7 +65,7 @@
                     <div>Completed</div>
                 </label>
             </fieldset>
-            <button id="addBookButton" type="button">Add Book</button>
+            <button id="addBookButton" type="submit">Add Book</button>
         </form>
     </div>
     <div class="header">
