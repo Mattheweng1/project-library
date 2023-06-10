@@ -40,7 +40,7 @@ body {
     color: var(--black-lime);
     transition: 0.5s;
     position: fixed;
-    z-index: 2;
+    z-index: 100;
     perspective: 800px;
 }
 
@@ -315,4 +315,26 @@ form > button {
     background-color: #22c55e;
     border-color: #15803d;
     color: #052e16;
+}
+
+#bookContextMenu {
+    position: absolute;
+    z-index: 10;
+    background-color: #991b1b;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+#bookContextMenu .bookContextItem {
+    padding: 8px 16px;
+    font-size: 15px;
+    color: var(--white-amber);
+    cursor: pointer;
+    border: 2px solid #7f1d1d;
+    border-radius: inherit;
+    box-shadow: -8px -4px 12px -3px rgba(0, 0, 0, 0.5);
+}
+
+#bookContextMenu .bookContextItem:hover {
+    background-color: #b91c1c;
 }

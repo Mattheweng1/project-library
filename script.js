@@ -1,3 +1,5 @@
+// Create a library of books.
+
 let myLibrary = [];
 
 function Book(title, author, totalPages, readingStatus) {
@@ -29,7 +31,6 @@ function addBookToLibrary() {
     document.getElementById("addBookForm").reset();
 
     refreshLibrary();
-    updateReadingStatus();
 }
 
 function removeAllChildNodes(parent) {
@@ -68,6 +69,9 @@ function refreshLibrary() {
         document.getElementById('bookContainer').appendChild(bookDiv);
         bookDiv.setAttribute('data-index', myLibrary.indexOf(book));
     })
+
+    updateReadingStatus();
+    prepareBookContextMenu();
 }
 
 refreshLibrary();
@@ -123,6 +127,67 @@ function updateReadingStatus() {
 }
 
 updateReadingStatus();
+
+// Right click on book to open menu with delete option.
+
+function createBookContextMenu(book) {
+    const bookContextMenu = document.createElement('div');
+    bookContextMenu.setAttribute('id', 'bookContextMenu');
+    bookContextMenu.setAttribute('data-index', book.getAttribute('data-index'));
+
+    const bookContextItem1 = document.createElement('div');
+    bookContextItem1.classList.add('bookContextItem');
+    bookContextItem1.setAttribute('id', 'deleteBook');
+    bookContextItem1.textContent = 'Delete';
+    bookContextItem1.addEventListener('click', () => {
+        myLibrary.splice(document.getElementById('bookContextMenu').getAttribute('data-index'), 1);
+        refreshLibrary();
+    })
+    bookContextMenu.appendChild(bookContextItem1);
+
+    document.getElementById('bookContainer').appendChild(bookContextMenu);
+}
+
+function prepareBookContextMenu() {
+    Array.from(document.querySelectorAll('.book')).forEach((book) => {
+        book.addEventListener('contextmenu', (event) => {
+            event.preventDefault();
+
+            if (document.getElementById('bookContextMenu')) {
+                bookContextMenu.remove();
+            }
+
+            const {pageX: mouseX, pageY: mouseY} = event;
+
+            createBookContextMenu(book);
+
+            bookContextMenu.style.top = `${mouseY}px`;
+            bookContextMenu.style.left = `${mouseX}px`;
+        })
+    })
+}
+
+prepareBookContextMenu();
+
+document.addEventListener('click', (event) => {
+    if (document.getElementById('bookContextMenu')) {
+
+        if (!bookContextMenu.contains(event.target)) {
+            bookContextMenu.remove();
+        }
+    }
+})
+
+document.addEventListener('contextmenu', (event) => {
+    const outsideBookClick = Array.from(document.querySelectorAll('.book')).every((e) => {
+        return !(e.contains(event.target));
+    })
+
+    if (document.getElementById('bookContextMenu') && outsideBookClick) {
+        event.preventDefault();
+        bookContextMenu.remove();
+    }
+})
 
 // Scale font with element width.
 
