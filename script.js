@@ -184,12 +184,21 @@ function showError(field) {
     }
 }
 
+// Set custom validity again after form reset.
+
+form.addEventListener('reset', () => {
+    readingStatusRadioArr[0].setCustomValidity("* Please select one of these options.");
+    for (const field of form.querySelectorAll('.field')) {
+        field.setCustomValidity("* Please fill out this field.");
+    }
+})
+
 // Radio fields have their own validation.
 
 const readingStatusRadioArr = Array.from(document.querySelectorAll(`[name='readingStatus']`));
 
 if (readingStatusRadioArr.every((e) => !e.checked)) {
-    readingStatusRadioArr[0].setCustomValidity("* Please fill out this field.");
+    readingStatusRadioArr[0].setCustomValidity("* Please select one of these options.");
 }
 
 readingStatusRadioArr[0].addEventListener('invalid', (event) => {
@@ -200,7 +209,7 @@ readingStatusRadioArr[0].addEventListener('invalid', (event) => {
 readingStatusRadioArr.forEach((radio) => {
     radio.addEventListener('change', () => {
         if (readingStatusRadioArr.every((e) => !e.checked)) {
-            readingStatusRadioArr[0].setCustomValidity("* Please fill out this field.");
+            readingStatusRadioArr[0].setCustomValidity("* Please select one of these options.");
         } else {
             readingStatusRadioArr[0].setCustomValidity('');
         }
