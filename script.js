@@ -2,12 +2,15 @@
 
 let myLibrary = [];
 
-function Book(title, author, totalPages, readingStatus) {
-    this.title = title;
-    this.author = author;
-    this.totalPages = totalPages;
-    this.readingStatus = readingStatus;
+class Book {
+    constructor(title, author, totalPages, readingStatus) {
+        this.title = title;
+        this.author = author;
+        this.totalPages = totalPages;
+        this.readingStatus = readingStatus;
+    }
 }
+
 
 myLibrary.push(new Book('The Tell-Tale Heart', 'Edgar Allan Poe', 4, 'Completed'));
 
