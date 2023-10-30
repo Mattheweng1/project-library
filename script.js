@@ -269,12 +269,14 @@ if (readingStatusRadioArr.every((e) => !e.checked)) {
     readingStatusRadioArr[0].setCustomValidity("* Please select one of these options.");
 }
 
-readingStatusRadioArr[0].addEventListener('invalid', (event) => {
-    form.querySelector(`fieldset.${readingStatusRadioArr[0].name} .error`).textContent = readingStatusRadioArr[0].validationMessage;
-    event.preventDefault();
-})
+
 
 readingStatusRadioArr.forEach((radio) => {
+    radio.addEventListener('invalid', (event) => {
+        form.querySelector(`fieldset.${radio.name} .error`).textContent = radio.validationMessage;
+        event.preventDefault();
+    })
+
     radio.addEventListener('change', () => {
         if (readingStatusRadioArr.every((e) => !e.checked)) {
             readingStatusRadioArr[0].setCustomValidity("* Please select one of these options.");
