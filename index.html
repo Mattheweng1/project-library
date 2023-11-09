@@ -1,80 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Book Tracker</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
-</head>
-<body>
+  </head>
+  <body>
     <div class="sidebar">
-        <div class="bookSide">
-            <div class="addBook">A <br>D <br>D <br><br>B <br>O <br>O <br>K</div>
+      <div class="bookSide">
+        <div class="addBook">
+          A <br />D <br />D <br /><br />B <br />O <br />O <br />K
         </div>
-        <form id="addBookForm" action="index.html" method="get">
-            <h1>Let's fill in some info...</h1>
-            <label for="title">
-                <div>
-                    Title
-                    <div class="error" aria-live="polite"></div>
-                </div>
-                <input class="field" type="text" id="title" name="title" required>
-            </label>
-            <label for="author">
-                <div>
-                    Author
-                    <div class="error" aria-live="polite"></div>
-                </div>
-                <input class="field" type="text" id="author" name="author" required>
-            </label>
-            <label for="totalPages">
-                <div>
-                    Total Pages
-                    <div class="error" aria-live="polite"></div>
-                </div>
-                <input class="field" type="tel" id="totalPages" name="totalPages" required>
-            </label>
-            <fieldset class="readingStatus">
-                <legend>Reading Status</legend>
-                <div class="error" aria-live="polite"></div>
-                <label for="toBeRead">
-                    <input type="radio" name="readingStatus" id="toBeRead" value="To Be Read" required>
-                    <svg class="c-form__radio-icon" viewbox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
-                        <circle class="c-form__radio-circle" cx="10.809" cy="10.809" r="9.461"/>
-                        <polyline class="c-form__radio-tick" points="5 8 10 15 25 0"/>
-                    </svg>
-                    <div>To Be Read</div>
-                </label>
-                <label for="inProgress">
-                    <input type="radio" name="readingStatus" id="inProgress" value="In Progress" required>
-                    <svg class="c-form__radio-icon" viewbox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
-                        <circle class="c-form__radio-circle" cx="10.809" cy="10.809" r="9.461"/>
-                        <polyline class="c-form__radio-tick" points="5 8 10 15 25 0"/>
-                    </svg>
-                    <div>In Progress</div>
-                </label>
-                <label for="completed">
-                    <input type="radio" name="readingStatus" id="completed" value="Completed" required>
-                    <svg class="c-form__radio-icon" viewbox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
-                        <circle class="c-form__radio-circle" cx="10.809" cy="10.809" r="9.461"/>
-                        <polyline class="c-form__radio-tick" points="5 8 10 15 25 0"/>
-                    </svg>
-                    <div>Completed</div>
-                </label>
-            </fieldset>
-            <button id="addBookButton" type="submit">Add Book</button>
-        </form>
+      </div>
+      <form id="addBookForm" action="index.html" method="get">
+        <h1>Let's fill in some info...</h1>
+        <label for="title">
+          <div>
+            Title
+            <div class="error" aria-live="polite"></div>
+          </div>
+          <input class="field" type="text" id="title" name="title" required />
+        </label>
+        <label for="author">
+          <div>
+            Author
+            <div class="error" aria-live="polite"></div>
+          </div>
+          <input class="field" type="text" id="author" name="author" required />
+        </label>
+        <label for="totalPages">
+          <div>
+            Total Pages
+            <div class="error" aria-live="polite"></div>
+          </div>
+          <input
+            class="field"
+            type="tel"
+            id="totalPages"
+            name="totalPages"
+            required
+          />
+        </label>
+        <fieldset class="readingStatus">
+          <legend>Reading Status</legend>
+          <div class="error" aria-live="polite"></div>
+          <label for="toBeRead">
+            <input
+              type="radio"
+              name="readingStatus"
+              id="toBeRead"
+              value="To Be Read"
+              required
+            />
+            <svg
+              class="c-form__radio-icon"
+              viewbox="0 0 22 22"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle
+                class="c-form__radio-circle"
+                cx="10.809"
+                cy="10.809"
+                r="9.461"
+              />
+              <polyline class="c-form__radio-tick" points="5 8 10 15 25 0" />
+            </svg>
+            <div>To Be Read</div>
+          </label>
+          <label for="inProgress">
+            <input
+              type="radio"
+              name="readingStatus"
+              id="inProgress"
+              value="In Progress"
+              required
+            />
+            <svg
+              class="c-form__radio-icon"
+              viewbox="0 0 22 22"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle
+                class="c-form__radio-circle"
+                cx="10.809"
+                cy="10.809"
+                r="9.461"
+              />
+              <polyline class="c-form__radio-tick" points="5 8 10 15 25 0" />
+            </svg>
+            <div>In Progress</div>
+          </label>
+          <label for="completed">
+            <input
+              type="radio"
+              name="readingStatus"
+              id="completed"
+              value="Completed"
+              required
+            />
+            <svg
+              class="c-form__radio-icon"
+              viewbox="0 0 22 22"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle
+                class="c-form__radio-circle"
+                cx="10.809"
+                cy="10.809"
+                r="9.461"
+              />
+              <polyline class="c-form__radio-tick" points="5 8 10 15 25 0" />
+            </svg>
+            <div>Completed</div>
+          </label>
+        </fieldset>
+        <button id="addBookButton" type="submit">Add Book</button>
+      </form>
     </div>
     <div class="header">
-        <div class="siteTitle">Book Tracker</div>
+      <div class="siteTitle">Book Tracker</div>
     </div>
     <div class="content">
-        <div id="bookContainer">
-            
-        </div>
+      <div id="bookContainer"></div>
     </div>
-</body>
+  </body>
 </html>
